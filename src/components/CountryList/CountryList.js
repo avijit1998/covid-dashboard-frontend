@@ -11,6 +11,7 @@ import {
   TableFooter,
   TablePagination,
 } from "@material-ui/core";
+import { NavLink } from "react-router-dom";
 
 const CountryList = ({ countries }) => {
   const [page, setPage] = useState(0);
@@ -50,7 +51,12 @@ const CountryList = ({ countries }) => {
             ).map((country) => (
               <TableRow key={country.id}>
                 <TableCell component="th" scope="row">
-                  {country.country}
+                  <NavLink
+                    to={`/countrydata/${country.slug}`}
+                    activeClassName="active"
+                  >
+                    {country.country}
+                  </NavLink>
                 </TableCell>
                 <TableCell align="right">{country.totalConfirmed}</TableCell>
                 <TableCell align="right">{country.totalDeaths}</TableCell>

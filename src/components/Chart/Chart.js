@@ -3,8 +3,6 @@ import { Line } from "react-chartjs-2";
 import styles from "./Chart.module.css";
 
 const Chart = ({ timelyData }) => {
-  timelyData.reverse();
-
   const lineChart = timelyData.length ? (
     <Line
       data={{

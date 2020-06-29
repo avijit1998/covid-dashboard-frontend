@@ -5,7 +5,7 @@ import cx from "classnames";
 
 import styles from "./Cards.module.css";
 
-const Cards = ({ confirmed, recovered, deaths, lastUpdate }) => {
+const Cards = ({ confirmed, recovered, deaths, lastUpdate, restDetails }) => {
   return (
     <div className={styles.container}>
       <Grid container spacing={3} justify="center">
@@ -28,6 +28,12 @@ const Cards = ({ confirmed, recovered, deaths, lastUpdate }) => {
                 separator=","
               />
             </Typography>
+            {restDetails && (
+              <Typography variant="body2" component="p">
+                +{restDetails.newCases}[
+                {(restDetails.newCasePercentage * 100).toFixed(2)}%]
+              </Typography>
+            )}
             <Typography color="textSecondary">
               {new Date(lastUpdate).toDateString()}
             </Typography>
@@ -55,6 +61,12 @@ const Cards = ({ confirmed, recovered, deaths, lastUpdate }) => {
                 separator=","
               />
             </Typography>
+            {restDetails && (
+              <Typography variant="body2" component="p">
+                +{restDetails.newRecovered}[
+                {(restDetails.newRecoveredPercentage * 100).toFixed(2)}%]
+              </Typography>
+            )}
             <Typography color="textSecondary">
               {new Date(lastUpdate).toDateString()}
             </Typography>
@@ -77,6 +89,12 @@ const Cards = ({ confirmed, recovered, deaths, lastUpdate }) => {
             <Typography variant="h5" component="h2">
               <CountUp start={0} end={deaths} duration={2.75} separator="," />
             </Typography>
+            {restDetails && (
+              <Typography variant="body2" component="p">
+                +{restDetails.newDeaths}[
+                {(restDetails.newDeathPercentage * 100).toFixed(2)}%]
+              </Typography>
+            )}
             <Typography color="textSecondary">
               {new Date(lastUpdate).toDateString()}
             </Typography>

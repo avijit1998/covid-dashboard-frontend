@@ -19,3 +19,12 @@ export const fetchCountries = async () => {
     return error;
   }
 };
+
+export const fetchCountryData = async (slug) => {
+  try {
+    const { data } = await axios.get(`${url}/countries/${slug}`);
+    return data;
+  } catch (error) {
+    return error;
+  }
+};
